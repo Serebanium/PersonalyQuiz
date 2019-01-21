@@ -11,9 +11,18 @@ import UIKit
 class QuestionVC: UIViewController {
 
     
+    @IBOutlet weak var questionLabel: UILabel!
+    
     @IBOutlet weak var singleStackView: UIStackView!
+    @IBOutlet var singleButtons: [UIButton]!
+    
     @IBOutlet weak var multiplyStackView: UIStackView!
+    @IBOutlet var multyLabels: [UILabel]!
+    
     @IBOutlet weak var rangedStackView: UIStackView!
+    @IBOutlet var rangedLabels: [UILabel]!
+    
+    @IBOutlet weak var progressView: UIProgressView!
     
     var questionIndex = 0
     
@@ -52,6 +61,8 @@ class QuestionVC: UIViewController {
         
     ]
     
+    var answersChosen = [Answer]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,21 +74,42 @@ class QuestionVC: UIViewController {
         multiplyStackView.isHidden = true
         rangedStackView.isHidden = true
         
-        navigationItem.title = "Вопрос № \(questionIndex + 1)"
-        
         let question = questions[questionIndex]
+        let answers = question.answers
+        let progress = Float(questionIndex) / Float(questions.count)
+        
+        navigationItem.title = "Вопрос № \(questionIndex + 1)"
+        questionLabel.text = question.text
+        progressView.setProgress(progress, animated: true)
         
         switch question.type {
         case .single:
-            singleStackView.isHidden = false
+            updateSingleStack(with: answers)
         case .multiple:
-            multiplyStackView.isHidden = false
+            updateMultipleStack(with: answers)
         case .ranged:
-            rangedStackView.isHidden = false
+            updateRangedStack(with: answers)
         
         }
     }
 
+    func updateSingleStack (with answers: [Answer]) {
+        singleStackView.isHidden = false
+        guard singleButtons.count <= answers.count else {return}
+        singleButtons.enumerated().forEach { $0.element.setTitle(answers[$0.offset].text, for: .normal) }
+    }
+    
+    func updateMultipleStack (with answers: [Answer]) {
+        multiplyStackView.isHidden = false
+        guard multyLabels.count <= answers.count else {return}
+        multyLabels.enumerated().forEach { $0.element.text = answers[$0.offset].text}
+    }
+    
+    func updateRangedStack (with answers: [Answer]) {
+        rangedStackView.isHidden = false
+        rangedLabels.first?.text = answers.first?.text
+        rangedLabels.last?.text = answers.last?.text
+    }
     /*
     // MARK: - Navigation
 
@@ -87,5 +119,15 @@ class QuestionVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func singleButtonPressed(_ sender: UIButton) {
+        let answers = questions[questionIndex].answers
+        guard let index = singleButtons.index(of: sender) else {return}
+        let answer = answers[index]
+        
+        answersChosen.append(answer)
+        
+        print(#function, answer)
+    }
+    
 }
