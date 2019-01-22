@@ -14,7 +14,10 @@ class WelcomeVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+        
+    }
 
-
+    @IBAction func unwindToBack(_ : UIStoryboardSegue) -> Void {}
 }
 

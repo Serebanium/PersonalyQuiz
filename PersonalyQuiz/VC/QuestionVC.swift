@@ -18,9 +18,13 @@ class QuestionVC: UIViewController {
     
     @IBOutlet weak var multiplyStackView: UIStackView!
     @IBOutlet var multyLabels: [UILabel]!
+    @IBOutlet var multySwitches: [UISwitch]!
+    
     
     @IBOutlet weak var rangedStackView: UIStackView!
     @IBOutlet var rangedLabels: [UILabel]!
+    @IBOutlet weak var rengedSlider: UISlider!
+    
     
     @IBOutlet weak var progressView: UIProgressView!
     
@@ -48,6 +52,8 @@ class QuestionVC: UIViewController {
             ]
         ),
         
+        
+        
         Question(text: "Сколько вы тратили на футболку или рубашку?",
                  type: .ranged,
                  answers: [
@@ -56,6 +62,37 @@ class QuestionVC: UIViewController {
                     Answer(text: "6000", type: .botinok),
                     Answer(text: "10000", type: .crosovok),
                     
+                    ]
+        ),
+        
+        Question(text: "Сколько вы тратили на джинсы или брюки?",
+                 type: .ranged,
+                 answers: [
+                    Answer(text: "100", type: .lapot),
+                    Answer(text: "3000", type: .ked),
+                    Answer(text: "6000", type: .botinok),
+                    Answer(text: "10000", type: .crosovok),
+                    
+                    ]
+        ),
+        
+        Question(text: "Какой фасон брюк вы предпочитаете?",
+                 type: .multiple,
+                 answers: [
+                    Answer(text: "Укороченные", type: .crosovok),
+                    Answer(text: "Зауженные", type: .botinok),
+                    Answer(text: "Прямые", type: .ked),
+                    Answer(text: "Свободные", type: .lapot),
+                    ]
+        ),
+        
+        Question(text: "Какая обувь вам нравится?",
+                 type: .multiple,
+                 answers: [
+                    Answer(text: "Кеды", type: .ked),
+                    Answer(text: "Кроссовки", type: .crosovok),
+                    Answer(text: "Ботинки", type: .botinok),
+                    Answer(text: "Сандали", type: .lapot),
                     ]
         ),
         
@@ -70,6 +107,13 @@ class QuestionVC: UIViewController {
     }
     
     func updateUI() {
+        
+        rengedSlider.value = 0.5
+        
+        for i in multySwitches {
+            i.isOn = false
+        }
+        
         singleStackView.isHidden = true
         multiplyStackView.isHidden = true
         rangedStackView.isHidden = true
@@ -119,6 +163,11 @@ class QuestionVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinetionVC: ResultVC = segue.destination as! ResultVC
+        destinetionVC.answers = answersChosen
+        
+    }
     
     @IBAction func singleButtonPressed(_ sender: UIButton) {
         let answers = questions[questionIndex].answers
@@ -126,8 +175,49 @@ class QuestionVC: UIViewController {
         let answer = answers[index]
         
         answersChosen.append(answer)
-        
         print(#function, answer)
+        print()
+        nextQuestion()
     }
     
+    
+    @IBAction func multipleButtonPressed(_ sender: UIButton) {
+        let answers = questions[questionIndex].answers
+        multySwitches.enumerated().forEach { if $0.element.isOn {
+            let answer = answers[$0.offset]
+            answersChosen.append(answer)
+            print(#function, answer)
+            }
+            
+        }
+        print()
+        nextQuestion()
+    }
+    
+    
+    @IBAction func rangedButtonPressed(_ sender: UIButton) {
+        let answers = questions[questionIndex].answers
+        
+        let index = Int(round(rengedSlider.value * Float(answers.count - 1)))
+        let answer = answers[index]
+        answersChosen.append(answer)
+        print(answer)
+        nextQuestion()
+    }
+    
+    func nextQuestion() {
+        
+        if questionIndex < questions.count - 1{
+            questionIndex += 1
+            updateUI()
+        } else {
+           performSegue(withIdentifier: "toResult", sender: nil)
+        }
+        updateUI()
+    }
+    
+    
+    override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {
+        
+    }
 }

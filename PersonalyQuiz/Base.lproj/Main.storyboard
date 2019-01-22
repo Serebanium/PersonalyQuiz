@@ -36,28 +36,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0oQ-bk-8jk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="0oQ-bk-8jk">
                                 <rect key="frame" x="10" y="30" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="BfU-ea-NZH"/>
                                     <constraint firstAttribute="height" constant="50" id="lar-OQ-dOF"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O50-uK-K3y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="O50-uK-K3y">
                                 <rect key="frame" x="260" y="30" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LHS-cd-zjH"/>
                                     <constraint firstAttribute="width" constant="50" id="MUC-5w-Z2B"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tQQ-v2-SuX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="tQQ-v2-SuX">
                                 <rect key="frame" x="260" y="420" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9JL-nk-Yr2"/>
                                     <constraint firstAttribute="width" constant="50" id="TZ9-ao-het"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3aj-C5-G6i">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3" translatesAutoresizingMaskIntoConstraints="NO" id="3aj-C5-G6i">
                                 <rect key="frame" x="10" y="420" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="2Zn-k4-8ec"/>
@@ -194,6 +194,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2aq-HA-r4X">
                                         <rect key="frame" x="0.0" y="164" width="300" height="30"/>
                                         <state key="normal" title="Ответить"/>
+                                        <connections>
+                                            <action selector="multipleButtonPressed:" destination="d2r-AZ-RJy" eventType="touchUpInside" id="Ien-ov-zIv"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -223,6 +226,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3B-c8-xgg">
                                         <rect key="frame" x="0.0" y="90.5" width="300" height="30"/>
                                         <state key="normal" title="Ответить"/>
+                                        <connections>
+                                            <action selector="rangedButtonPressed:" destination="d2r-AZ-RJy" eventType="touchUpInside" id="Qdg-wF-JE0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -256,6 +262,7 @@
                         <outlet property="progressView" destination="oGz-LS-kNW" id="I0J-qV-YiG"/>
                         <outlet property="questionLabel" destination="wFs-Cs-MQ5" id="sOL-jq-mRe"/>
                         <outlet property="rangedStackView" destination="VyG-3I-oeE" id="0Le-ny-CKJ"/>
+                        <outlet property="rengedSlider" destination="BXS-WA-iFL" id="V18-uj-uFt"/>
                         <outlet property="singleStackView" destination="DMy-Al-Ppq" id="UBd-e3-G11"/>
                         <outletCollection property="singleButtons" destination="8NX-2B-31c" collectionClass="NSMutableArray" id="n9O-IZ-bUh"/>
                         <outletCollection property="singleButtons" destination="a64-qg-jWQ" collectionClass="NSMutableArray" id="WVY-U4-5O0"/>
@@ -267,6 +274,10 @@
                         <outletCollection property="multyLabels" destination="FNa-9R-ZMD" collectionClass="NSMutableArray" id="IO1-ix-kBK"/>
                         <outletCollection property="rangedLabels" destination="haY-Gb-1yS" collectionClass="NSMutableArray" id="WrY-Nv-hnW"/>
                         <outletCollection property="rangedLabels" destination="rj3-rC-O10" collectionClass="NSMutableArray" id="DOA-3j-ZEJ"/>
+                        <outletCollection property="multySwitches" destination="8PX-3N-Oq6" collectionClass="NSMutableArray" id="4ov-iY-NRD"/>
+                        <outletCollection property="multySwitches" destination="iRD-CZ-E4z" collectionClass="NSMutableArray" id="MvV-c8-3iD"/>
+                        <outletCollection property="multySwitches" destination="4a8-uT-sdF" collectionClass="NSMutableArray" id="dbf-B5-ROF"/>
+                        <outletCollection property="multySwitches" destination="1eH-Hb-pB7" collectionClass="NSMutableArray" id="UIK-dL-9nF"/>
                         <segue destination="ybB-wq-A9j" kind="show" identifier="toResult" id="o1l-Y7-6K8"/>
                     </connections>
                 </viewController>
@@ -282,17 +293,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="y3M-qo-6c3">
-                                <rect key="frame" x="10" y="191.5" width="300" height="97"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zuM-OF-oiy">
+                                <rect key="frame" x="10" y="94" width="300" height="356"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вы - модник" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLH-Ih-fzG">
-                                        <rect key="frame" x="39" y="0.0" width="222.5" height="48"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тратите много, ума мало, папаша купил все" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ekh-i2-xks">
-                                        <rect key="frame" x="12" y="56" width="276" height="41"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BB8-G2-dhN">
+                                        <rect key="frame" x="30" y="0.0" width="240" height="174"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="один два три четыре пять шесть семь восемь" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeU-qi-Npf">
+                                        <rect key="frame" x="18.5" y="182" width="263.5" height="174"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -302,18 +310,27 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="y3M-qo-6c3" secondAttribute="trailing" constant="10" id="6iC-vi-ebu"/>
-                            <constraint firstItem="y3M-qo-6c3" firstAttribute="leading" secondItem="lFm-vT-e8E" secondAttribute="leading" constant="10" id="Fw6-VV-BxR"/>
-                            <constraint firstItem="y3M-qo-6c3" firstAttribute="centerY" secondItem="lFm-vT-e8E" secondAttribute="centerY" id="Mls-hC-U06"/>
-                            <constraint firstItem="y3M-qo-6c3" firstAttribute="centerX" secondItem="lFm-vT-e8E" secondAttribute="centerX" id="is9-h0-LQn"/>
+                            <constraint firstItem="nE2-8y-dBY" firstAttribute="bottom" secondItem="zuM-OF-oiy" secondAttribute="bottom" constant="30" id="RdO-ie-Oi6"/>
+                            <constraint firstItem="zuM-OF-oiy" firstAttribute="top" secondItem="nE2-8y-dBY" secondAttribute="top" constant="30" id="Ueh-Os-NqB"/>
+                            <constraint firstAttribute="trailing" secondItem="zuM-OF-oiy" secondAttribute="trailing" constant="10" id="hIW-Sd-edx"/>
+                            <constraint firstItem="zuM-OF-oiy" firstAttribute="leading" secondItem="nE2-8y-dBY" secondAttribute="leading" constant="10" id="s1h-ia-cMT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nE2-8y-dBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Результаты" id="Jrj-yD-QRM">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="6d8-7g-K6W"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="6d8-7g-K6W">
+                            <connections>
+                                <segue destination="sSf-ai-W5q" kind="unwind" unwindAction="unwindToBack:" id="Ct3-wH-3QN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="BB8-G2-dhN" id="m20-a8-OaI"/>
+                        <outlet property="label" destination="eeU-qi-Npf" id="UC8-o3-sjv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fba-pk-The" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="sSf-ai-W5q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2220" y="35"/>
         </scene>
@@ -336,4 +353,10 @@
             <point key="canvasLocation" x="772.5" y="35"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1" width="201" height="160"/>
+        <image name="2" width="272" height="183"/>
+        <image name="3" width="201" height="182"/>
+        <image name="4" width="152" height="153"/>
+    </resources>
 </document>
